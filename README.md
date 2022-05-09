@@ -50,3 +50,7 @@ For more details read [this](https://www.digitalocean.com/community/tutorials/ho
 ![students](https://user-images.githubusercontent.com/40044042/156389596-a409b129-e9cb-4946-9d9d-47f113c1d8f3.png)
 
 ![grades](https://user-images.githubusercontent.com/40044042/156389628-1653aba7-c033-48d0-ac3a-df37374f0d1e.png)
+
+## Relational Schema of Database
+
+![schema](schema.png)

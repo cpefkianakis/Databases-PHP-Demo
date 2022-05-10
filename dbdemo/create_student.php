@@ -45,29 +45,36 @@
                 <button class = "btn btn-primary btn-submit-custom" formaction="index.php">Back</button>
             </form>
         </div>
+        <div class="form-group col-sm-3 mb-3">
+            <?php
+                include 'db_connection.php';
+                $conn = OpenCon();
+                if(isset($_POST['submit_creds'])){
+                    $name = $_POST['name'];
+                    $surname = $_POST['surname'];
+                    $email = $_POST['email'];
+
+                    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                        echo '<hr>Invalid email format, please try again';
+                    }
+                    else{
+                        $query = "INSERT INTO students (name, surname, email)
+                                VALUES ('$name', '$surname', '$email')";
+                        if (mysqli_query($conn, $query)) {
+                            //echo "New record created successfully";
+                            header("Location: ./students.php");
+                            exit();
+                        }
+                        else{
+                            echo "Error while creating record: <br>" . mysqli_error($conn) . "<br>";
+                        }
+                    }
+                }
+                
+            ?>
+        </div>
     </div>
     </div>
-
-    <?php
-        include 'db_connection.php';
-        $conn = OpenCon();
-        if(isset($_POST['submit_creds'])){
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            
-            $query = "INSERT INTO students (name, surname, email)
-                    VALUES ('$name', '$surname', '$email')";
-            if (mysqli_query($conn, $query)) {
-                //echo "New record created successfully";
-            }
-            else{
-                echo "Error while creating record: <br>" . mysqli_error($conn) . "<br>";
-            }
-        }
-        
-    ?>
-
 
     <script src = "{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
     

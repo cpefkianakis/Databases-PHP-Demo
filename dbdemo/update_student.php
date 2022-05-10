@@ -64,31 +64,40 @@
                 <button class = "btn btn-primary btn-submit-custom" formaction="students.php">Back</button>
 
             </form>
-    </div>
-    </div>
-</div>
+        </div>
+        <div class="form-group col-sm-3 mb-3">
+            <?php
+            
+                if(isset($_POST['submit_upd'])){
+                            
+                    $name = $_POST['name'];
+                    $surname = $_POST['surname'];
+                    $email = $_POST['email'];
 
-    <?php
-        
-        if(isset($_POST['submit_upd'])){
+                    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                        echo '<hr>Invalid email format, please try again';
+                    }
+                    else{
+                        $query = "UPDATE students 
+                                SET name = '$name', surname = '$surname', email = '$email'
+                                WHERE id = $id";
+                        if (mysqli_query($conn, $query)) {
+                            //echo "Record updated successfully";
+                            header("Location: ./students.php");
+                            exit();
+                        }
+                        else{
+                            echo "Error while updating record: <br>" . mysqli_error($conn) . "<br>";
+                        }
+                    }
                     
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            $query = "UPDATE students 
-                    SET name = '$name', surname = '$surname', email = '$email'
-                    WHERE id = $id";
-            if (mysqli_query($conn, $query)) {
-                //echo "Record updated successfully";
-                header("Location: ./students.php");
-                exit();
-            }
-            else{
-                echo "Error while updating record: <br>" . mysqli_error($conn) . "<br>";
-            }
-        }
-        
-    ?>
+                }
+                
+            ?>
+
+        </div>
+    </div>
+    </div>
 
 
     <script src = "{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>

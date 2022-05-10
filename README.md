@@ -39,7 +39,7 @@ Applications that run without `sudo` privileges often are not allowed to connect
 4. Reload the grant tables to ensure that the new privileges are put into effect using:
 `FLUSH PRIVILEGES;`.
 5. Exit MySQL with `mysql> exit;`.
-7. Go to `dbdemo/__init__.py` and change the `app.config["MYSQL_USER"]` and `app.config["MYSQL_PASSWORD"]` lines according to the username and the password you chose before.
+
 
 For more details read [this](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql).
     

@@ -41,8 +41,8 @@
                     $row = mysqli_fetch_row($res1);
 
                     echo '<div class="form-group col-sm-3 mb-3">';
-                        echo '<label class = "form-label" style="width: 400px;">Are you sure you want to delete student: <br><b>' . $row[0] . ' ' . $row[1] . '</b></label>';
-                        
+                        echo '<label class = "form-label" style="width: 300px;">Are you sure you want to delete student <br><b>' . $row[0] . ' ' . $row[1] . '?</b></label>';
+                        echo '<label class = "form-label" style="width: 300px;">(Note: This action will also delete the grades associated with this student)</label>';
                     echo '</div>';
 
                     if(isset($_POST['submit_del'])){

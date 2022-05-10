@@ -44,7 +44,7 @@
                     $row = mysqli_fetch_row($result);
 
                     echo '<div class="form-group col-sm-3 mb-3">';
-                        echo '<label class = "form-label" style="width: 400px;">Are you sure you want to delete <b>' . $row[0] . ' </b> grade from student <br><b>' . $row[2] . ' ' . $row[3] . '</b>?</label>';
+                        echo '<label class = "form-label" style="width: 400px;">Are you sure you want to delete <b>' . $row[0] . ' </b>(' . $row[1] . ') grade from student <b>' . $row[2] . ' ' . $row[3] . '</b>?</label>';
                         
                     echo '</div>';
 

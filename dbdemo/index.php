@@ -66,7 +66,10 @@
                                 include 'db_connection.php';
                                 $conn = OpenCon();
 
-                                $query = "SELECT g.grade, s.name, s.surname FROM students s INNER JOIN grades g ON g.student_id = s.id WHERE g.course_name = 'DRI' ORDER BY g.grade DESC LIMIT 1";
+                                $query = "SELECT g.grade, s.name, s.surname 
+                                        FROM students s INNER JOIN grades g ON g.student_id = s.id 
+                                        WHERE g.course_name = 'DRI' 
+                                        ORDER BY g.grade DESC LIMIT 1";
                                 $result = mysqli_query($conn, $query);
                                 if($best_dribbling_grade = mysqli_fetch_row($result)){
                                     echo 'The best Dribbling grade is ' . $best_dribbling_grade[0] . ' and belongs to ' . $best_dribbling_grade[1] . ' ' . $best_dribbling_grade[2];
@@ -103,37 +106,6 @@
                 </div>
             </div>
         </div>
-    
-    <?php 
-        /*
-        include 'db_connection.php';
-        $conn = OpenCon();
-        $query = "SELECT * FROM students";
-        $result = mysqli_query($conn, $query);
-        if($result->num_rows == 0)
-                echo "This customer does not exist";
-            else{
-                echo '<table id="students">';
-                    echo '<tr>';
-                        echo '<th>Id</th>';
-                        echo '<th>Name</th>';
-                        echo '<th>Surname</th>';
-                        echo '<th>Email</th>';
-                    echo '</tr>';
-
-                    while ($row = mysqli_fetch_row($result)){
-                        echo '<tr>';
-                        echo '<td>' . $row[0] . '</td>';
-                        echo '<td>' . $row[1] . '</td>';
-                        echo '<td>' . $row[2] . '</td>';
-                        echo '<td>' . $row[3] . '</td>';
-                        echo '</tr>';
-    
-                    }
-                echo '</table>';
-                }
-                */
-    ?>
     </div>
 
     <script src = "{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
